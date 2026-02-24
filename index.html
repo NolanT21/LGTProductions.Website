@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LGT Productions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+
+/* -----------------------------
+   RESET
+------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+    background: #0a0f0a;
+    color: white;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* -----------------------------
+   BACKGROUND
+------------------------------*/
+body {
+    position: relative;
+    overflow-x: hidden;
+    background: radial-gradient(ellipse 900px 600px at 15% 0%, #061a0c 0%, #0a0f0a 60%);
+}
+
+/* Green atmospheric glow top-left */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 600px 400px at 10% 5%, rgba(34, 197, 94, 0.08), transparent 60%),
+        linear-gradient(160deg, rgba(0, 255, 94, 0.05) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Subtle green glow near the app card area */
+body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* -----------------------------
+   LAYOUT
+------------------------------*/
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: auto;
+    padding: 72px 24px 100px;
+    text-align: center;
+}
+
+/* -----------------------------
+   HEADER
+------------------------------*/
+.logo {
+    opacity: 0.6;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 72px;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    opacity: 0.6;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+}
+
+/* GREEN ACCENT */
+.highlight {
+    display: inline-block;
+    font-size: 46px;
+    font-weight: 700;
+    padding: 10px 28px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+
+    background: linear-gradient(100deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);
+    border-radius: 12px;
+
+    /* Subtle inner glow */
+    box-shadow:
+        0 0 40px rgba(34, 197, 94, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* -----------------------------
+   APPS
+------------------------------*/
+.apps {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    margin-top: 80px;
+    flex-wrap: wrap;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-decoration: none;
+    color: inherit;
+
+    max-width: 280px;
+    padding: 28px 24px 24px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+
+    transition: all 0.3s ease;
+}
+
+.app:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.app:hover .app-icon {
+    transform: scale(1.05);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(199, 234, 212, 0.2),
+        0 0 80px rgba(129, 129, 129, 0.1);
+    filter: drop-shadow(0 0 20px rgba(174, 174, 174, 0.25));
+}
+
+.app-icon {
+    width: 130px;
+    height: 130px;
+    border-radius: 30px;
+    margin: 0 auto 22px;
+    overflow: hidden;
+
+    background: linear-gradient(145deg, #1a1a1a, #050505);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+
+    transition: all 0.3s ease;
+}
+
+.app-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: block;
+}
+
+.app h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+/* iOS pill badge */
+.platform {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.8;
+}
+
+.description {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.6;
+    line-height: 1.65;
+    max-width: 230px;
+}
+
+/* -----------------------------
+   FOOTER
+------------------------------*/
+footer {
+    margin-top: 120px;
+    opacity: 0.35;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* -----------------------------
+   ENTRANCE ANIMATIONS
+------------------------------*/
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.logo       { animation: fadeUp 0.6s ease both; animation-delay: 0.05s; }
+.subtitle   { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
+.highlight  { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
+.apps       { animation: fadeUp 0.7s ease both; animation-delay: 0.4s; }
+footer      { animation: fadeUp 0.6s ease both; animation-delay: 0.55s; }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">LGT Productions</div>
+
+    <div class="subtitle">Building the</div>
+    <div class="highlight">apps that make life easier</div>
+
+    <div class="apps">
+
+        <a href="https://getarmbarn.com/" class="app">
+            <div class="app-icon">
+                <img src="Toro 3.1.png" alt="ArmBarn Icon">
+            </div>
+            <h2>ArmBarn</h2>
+            <div class="platform">iOS</div>
+            <p class="description">
+                The most efficient way to chart pitches and share with your team.
+            </p>
+        </a>
+
+    </div>
+
+    <footer>© LGT Productions</footer>
+
+</div>
+
+</body>
+</html>
